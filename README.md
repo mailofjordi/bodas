@@ -12,4 +12,4 @@ En el directorio del proyecto:
 - php app/console doctrine:schema:update --force
 - php app/console server:start 0.0.0.0:8000
 
-En un navegador de tu máquina, ves a 10.10.10.10:8000
+En un navegador de tu máquina, ves a http://10.10.10.10:8000/nuptic42
