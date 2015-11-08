@@ -1,0 +1,136 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Peticion
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\PeticionRepository")
+ */
+class Peticion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="idSimulador", type="string", length=255)
+     */
+    private $idSimulador;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="num", type="integer")
+     */
+    private $num;
+
+     /**
+     * @var Direccion
+     *
+     * @ORM\ManyToOne(targetEntity="Direccion")
+     * @ORM\JoinColumn(name="id_direccion", referencedColumnName="id")
+     */
+    protected $direccion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="recorrido", type="integer")
+     */
+    private $recorrido;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set idSimulador
+     *
+     * @param string $idSimulador
+     *
+     * @return Peticion
+     */
+    public function setIdSimulador($idSimulador)
+    {
+        $this->idSimulador = $idSimulador;
+
+        return $this;
+    }
+
+    /**
+     * Get idSimulador
+     *
+     * @return string
+     */
+    public function getIdSimulador()
+    {
+        return $this->idSimulador;
+    }
+
+    /**
+     * Set num
+     *
+     * @param integer $num
+     *
+     * @return Peticion
+     */
+    public function setNum($num)
+    {
+        $this->num = $num;
+
+        return $this;
+    }
+
+    /**
+     * Get num
+     *
+     * @return integer
+     */
+    public function getNum()
+    {
+        return $this->num;
+    }
+
+    /**
+     * Set recorrido
+     *
+     * @param integer $recorrido
+     *
+     * @return Peticion
+     */
+    public function setRecorrido($recorrido)
+    {
+        $this->recorrido = $recorrido;
+
+        return $this;
+    }
+
+    /**
+     * Get recorrido
+     *
+     * @return integer
+     */
+    public function getRecorrido()
+    {
+        return $this->recorrido;
+    }
+}
+

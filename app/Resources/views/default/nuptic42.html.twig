@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+    	Lanza un simulador nuptic42 haciendo clic en el siguiente botón:<br>
+    	<button onclick="nupticSimulator('simulador1')">Lanzar simulador</button>
+    </div>
+    <div id='results'>
+    	
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('nuptic42/nuptic42.js') }}"></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+{% endblock %}
+
