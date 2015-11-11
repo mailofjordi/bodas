@@ -23,31 +23,17 @@ echo "///////////////////////////////////////////////"
 apt-get install --assume-yes curl
 
 echo "///////////////////////////////////////////////"
-echo "Installing git..."
-echo "///////////////////////////////////////////////"
-apt-get install --assume-yes git
-
-echo "///////////////////////////////////////////////"
-echo "Installing symfony installer..."
-echo "///////////////////////////////////////////////"
-curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
-chmod a+x /usr/local/bin/symfony
-
-echo "///////////////////////////////////////////////"
 echo "Setting php-cli date.timezone to Madrid..."
 echo "///////////////////////////////////////////////"
 sudo sed -i "s/^;date.timezone =$/date.timezone = \"Europe\/Madrid\"/" /etc/php5/cli/php.ini |grep "^timezone" /etc/php5/cli/php.ini
 
 echo "///////////////////////////////////////////////"
-echo "Explicitly set default client_encoding..."
+echo "Installing composer..."
 echo "///////////////////////////////////////////////"
-echo "client_encoding = utf8" >> "/etc/postgresql/9.3/main/postgresql.conf"
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
 
 echo "///////////////////////////////////////////////"
-echo "Create a new postgresql user with password..."
+echo "Configuring project..."
 echo "///////////////////////////////////////////////"
-cat << EOF | su - postgres -c psql
--- Create the database user:
-CREATE USER dbuser WITH PASSWORD 'db-user';
-ALTER USER dbuser CREATEDB;
-EOF
+sudo sed -i "s/^    database_host: 127.0.0.1$/    database_host: 127.0.0.1\n    database_driver: pdo_pgsql/" /vagrant/app/config/parameters.yml
