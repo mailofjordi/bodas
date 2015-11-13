@@ -3,13 +3,8 @@ bodas
 
 Para probarlo necesitaras tener vagrant instalado en tu máquina y estar conectado a internet.
 
-En el directorio del proyecto:
+Para desplegarlo, en un terminal, en el directorio del proyecto, ejecuta:
 
 - vagrant up
-- vagrant ssh
-- cd /vagrant
-- php app/console doctrine:database:create
-- php app/console doctrine:schema:update --force
-- php app/console server:start 0.0.0.0:8000
 
 En un navegador de tu máquina, ves a http://10.10.10.10:8000/nuptic42
