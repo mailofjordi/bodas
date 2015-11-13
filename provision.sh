@@ -34,6 +34,15 @@ curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
 echo "///////////////////////////////////////////////"
+echo "Installing Redis..."
+echo "///////////////////////////////////////////////"
+wget http://download.redis.io/releases/redis-3.0.5.tar.gz
+tar xzf redis-3.0.5.tar.gz
+cd redis-3.0.5
+make
+src/redis-server
+
+echo "///////////////////////////////////////////////"
 echo "Deploying project..."
 echo "///////////////////////////////////////////////"
 cd /vagrant
