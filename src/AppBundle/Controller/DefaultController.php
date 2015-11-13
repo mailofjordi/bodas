@@ -48,6 +48,11 @@ class DefaultController extends Controller
             $em->persist($direccion);
             $em->persist($peticion);
             $em->flush();
+            
+            if ($direccion->getEste() > 0) {
+                $logger = $this->get('logger');
+                $logger->info($peticion);
+            }
 
             $data = array(
                 'idPeticion' => $peticion->getid(),

@@ -172,4 +172,9 @@ class Peticion
     {
         return $this->direccion;
     }
+    
+    public function __toString()
+    {
+        return "idSimulador: " . $this->idSimulador . " Num: " . $this->num . " Dir: " . $this->direccion . " Recorrido: " . $this->recorrido;
+    }
 }

@@ -166,4 +166,9 @@ class Direccion
     {
         return $this->oeste;
     }
+    
+    public function __toString()
+    {
+        return " N: " . $this->norte . " S: " . $this->sur . " E: " . $this->este . " O: " . $this->oeste;
+    }
 }
