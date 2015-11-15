@@ -36,11 +36,15 @@ mv composer.phar /usr/local/bin/composer
 echo "///////////////////////////////////////////////"
 echo "Installing Redis..."
 echo "///////////////////////////////////////////////"
+apt-get install build-essential
+apt-get install tcl8.5
 wget http://download.redis.io/releases/redis-3.0.5.tar.gz
 tar xzf redis-3.0.5.tar.gz
 cd redis-3.0.5
 make
-src/redis-server
+make install
+cd utils
+./install_server.sh
 
 echo "///////////////////////////////////////////////"
 echo "Deploying project..."
