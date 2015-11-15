@@ -67,6 +67,7 @@ Vagrant.configure(2) do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", path: "provision.sh"
   config.vm.provision "shell", inline: "php /vagrant/app/console server:start 0.0.0.0:8000", run: "always"
+  config.vm.provision "shell", inline: "/home/vagrant/redis-3.0.5/src/redis-server", run: "always"
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
