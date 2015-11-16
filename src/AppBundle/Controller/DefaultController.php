@@ -44,6 +44,7 @@ class DefaultController extends Controller
             );
 
             //persisting this request
+            ////////////////////////////////////////////////////////////
             $em = $this->getDoctrine()->getManager();
             $em->persist($direccion);
             $em->persist($peticion);
@@ -54,6 +55,20 @@ class DefaultController extends Controller
                 $logger->info($peticion);
             }
 
+            //We store in redis num of request for the current date
+            ////////////////////////////////////////////////////////////
+            
+            //just we need to know tomorow at 00:00:00 (to reset request's amount)
+            $tomorowInit = \DateTime::createFromFormat('dmYHis', (date('d')+1) . date('mY') . "000000")->getTimestamp();
+
+            $client = new \Predis\Client();
+            //just contatenate dmY to key to store historical daily requests (without expire at)
+            $client->incr('peticiones');
+            $client->expireat('peticiones', $tomorowInit);
+            $value = $client->get('peticiones');
+
+            //prepare data to return
+            ////////////////////////////////////////////////////////////
             $data = array(
                 'idPeticion' => $peticion->getid(),
                 'recorrido' => $peticion->getRecorrido(),
