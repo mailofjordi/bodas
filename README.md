@@ -1,4 +1,4 @@
-bodas
+nuptic42
 =====
 
 Para probarlo necesitaras tener vagrant instalado en tu máquina y estar conectado a internet.
